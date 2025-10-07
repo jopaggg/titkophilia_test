@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест на Титкофилию (ТИВТ)</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --light: #f8f9fa;
+      --success: #4cc9f0;
+      --soft-bg: #f0f4ff;
+      --text: #212529;
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background-color: var(--soft-bg) !important;
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .page {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .page.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      border-radius: 16px !important;
+      border: none !important;
+      box-shadow: 0 4px 20px rgba(67, 97, 238, 0.08) !important;
+      transition: var(--transition);
+      background: white;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 25px rgba(67, 97, 238, 0.15) !important;
+      transform: translateY(-3px);
+    }
+
+    .question-card {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .option-btn {
+      transition: var(--transition);
+      font-size: 0.85rem;
+      padding: 0.5rem 0.4rem;
+      border-radius: 10px !important;
+      border: 1px solid #e0e0e0 !important;
+      background: #fafbff !important;
+      color: #4a5568 !important;
+    }
+
+    .option-btn:hover {
+      background: #eef2ff !important;
+      color: var(--primary) !important;
+      border-color: #cbd5ff !important;
+    }
+
+    .option-btn.active {
+      background: var(--primary) !important;
+      color: white !important;
+      border-color: var(--primary) !important;
+      transform: scale(1.03);
+      box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-primary {
+      background: var(--primary) !important;
+      border: none !important;
+      padding: 0.6rem 1.5rem !important;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+    }
+
+    .gender-select {
+      margin: 24px 0;
+    }
+
+    .result-level {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 1.2rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--success));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    footer {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e9ecef;
+    }
+
+    @media (max-width: 576px) {
+      .option-btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.2rem;
+      }
+      .btn-group {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .btn-group > * {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <!-- Страница 1: Описание + выбор пола -->
+    <div id="page1" class="page active">
+      <header class="text-center mb-4 animate__animated animate__fadeIn">
+        <h1 class="display-5 fw-bold" style="color: var(--primary);">Тест на Титкофилию (ТИВТ)</h1>
+        <p class="lead text-muted mt-2">Отечественная психодиагностическая методика</p>
+      </header>
+
+      <div class="card p-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+        <p><strong>Тест на Титкофила (ТИВТ)</strong> — отечественная психодиагностическая методика, созданная талантливыми студентами-психологами группы 202 КП.</p>
+        <p>Этот инструмент предназначен для измерения уровня Титкофилии согласно теоретическим взглядам его авторов. Уровень Титкофилии, по их мнению, выражается в искренней любви и уважении к прекрасному и талантливому преподавателю Ивану Васильевичу Титкову.</p>
+        <ul class="mt-3">
+          <li>30 вопросов</li>
+          <li>5 минут</li>
+          <li>Авторы: группа 202 КП</li>
+        </ul>
+        <p class="mt-3 fw-bold text-success">Пройти бесплатно и анонимно)))))))</p>
+      </div>
+
+      <!-- Выбор пола -->
+      <div class="card p-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+        <h5 class="text-center mb-3">Укажите ваш пол:</h5>
+        <div class="d-flex justify-content-center flex-wrap gap-3">
+          <button type="button" class="btn btn-outline-primary px-4 py-2" id="btn-male" onclick="selectGender('мужчина', this)">Мужчина</button>
+          <button type="button" class="btn btn-outline-primary px-4 py-2" id="btn-female" onclick="selectGender('женщина', this)">Женщина</button>
+        </div>
+        
+      </div>
+
+      <div class="text-center animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+        <button class="btn btn-primary btn-lg px-5 py-3" id="start-btn" disabled onclick="goToPage(2)">Начать тест</button>
+      </div>
+    </div>
+
+    <!-- Страница 2: Вопросы -->
+    <div id="page2" class="page">
+      <header class="text-center mb-4 animate__animated animate__fadeIn">
+        <h2 class="h4">Тест на Титкофилию</h2>
+        <p class="text-muted mt-2">Ответьте на все 30 вопросов</p>
+      </header>
+
+      <div id="questions" class="mb-4"></div>
+
+      <div class="text-center animate__animated animate__fadeInUp">
+        <button class="btn btn-success btn-lg px-5 py-3" onclick="calculateResult()">Получить результат</button>
+      </div>
+    </div>
+
+    <!-- Страница 3: Результат -->
+    <div id="page3" class="page">
+      <header class="text-center mb-4 animate__animated animate__zoomIn">
+        <h2 class="h4">Ваш результат</h2>
+      </header>
+
+      <div class="card p-4 text-center animate__animated animate__fadeInUp">
+        <p class="fs-5">Вы набрали <span id="score" class="fw-bold" style="color: var(--primary);">0</span> баллов из 120.</p>
+        <div class="result-level" id="level-text">—</div>
+        <div class="mt-3" id="interpretation">—</div>
+      </div>
+
+      <div class="text-center mt-4 animate__animated animate__fadeIn">
+        <button class="btn btn-primary px-4 py-2" onclick="location.reload()">Пройти тест снова</button>
+      </div>
+    </div>
+
+    <footer class="text-center">
+      © 2025 Тест на Титкофилию (ТИВТ) | Группа 202 КП
+    </footer>
+  </div>
+
+  <script>
+    // Хранилище пола
+    let userGender = null;
+
+    function selectGender(gender, btn) {
+      // Сброс активного состояния
+      document.querySelectorAll('#btn-male, #btn-female').forEach(b => {
+        b.classList.remove('active', 'btn-primary');
+        b.classList.add('btn-outline-primary');
+      });
+
+      // Активация выбранной кнопки
+      btn.classList.remove('btn-outline-primary');
+      btn.classList.add('btn-primary', 'active');
+
+      userGender = gender;
+      document.getElementById('start-btn').disabled = false;
+    }
+
+    const questions = [
+      "Я стараюсь делать презентации яркими и запоминающимися.",
+      "Я сильно расстраиваюсь, когда Иван Васильевич уезжает в командировку.",
+      "Я не упускаю шанс получить камушек за активность на занятии.",
+      "Я с удовольствием участвую в активностях, которые предлагает Иван Васильевич.",
+      "У меня всегда есть ресурс идти на пару по дифференциальной психологии в 8:30.",
+      "Мне важно услышать обратную связь от Ивана Васильевича о моем выступлении.",
+      "Мне бы хотелось проводить чаепития каждую неделю.",
+      "Я стараюсь не опаздывать на занятия Ивана Васильевича.",
+      "Я перечитываю выводы в чате группы по занятию.",
+      "Я развиваю разные навыки на парах Ивана Васильевича.",
+      "В среду я не могу спать после 5 утра.",
+      "Мое настроение поднимается, когда я понимаю, что сегодня четверг.",
+      "Я надеюсь, что следующая идея Ивана Васильевича будет ещё более необычной.",
+      "Я не против приезжать к 8:30 каждый день в университет на пару по дифференциальной психологии.",
+      "Меня преследуют навязчивые мысли: забрать все камушки себе.",
+      "Я готовлюсь к паре Ивана Васильевича за неделю.",
+      "Я жду лето ради повторения события 'психология и суслики'.",
+      "Знания, которые я получаю на парах Ивана Васильевича, я применяю в жизни.",
+      "Мне хотелось бы снова попасть на первый курс ради пар профессиональной этики и психологии безопасности.",
+      "Я не забываю благодарить Ивана Васильевича за его труд.",
+      "Я делаю записи в дневник наблюдений педагогического процесса каждый день.",
+      "Моя мотивация к учебе повышается, когда Иван Васильевич благодарит группу за посещения занятия.",
+      "Я с улыбкой вспоминаю, как на новый год мы спасали змейку от Гринча.",
+      "Я мечтаю о том, чтобы пойти на лазертаг с группой и Иваном Васильевичем.",
+      "Мне не нравится болеть в среду и четверг.",
+      "Меня пугают сообщения в чате от Ивана Васильевича, когда ему на ум приходит новая идея.",
+      "Материал, изученный на первом курсе, я применяю до сих пор.",
+      "Я хочу, чтобы в расписании каждый день стояла пара с Иваном Васильевичем.",
+      "У меня кружится голова, когда я пропускаю педагогическую психологию.",
+      "Я уважаю и люблю Ивана Васильевича."
+    ];
+
+    // Генерация вопросов
+    const qContainer = document.getElementById('questions');
+    questions.forEach((q, i) => {
+      const delay = i * 0.05;
+      const div = document.createElement('div');
+      div.className = 'question-card mb-3';
+      div.style.animationDelay = `${delay}s`;
+      div.innerHTML = `
+        <div class="card p-3">
+          <p class="fw-bold mb-3">${i + 1}. ${q}</p>
+          <div class="d-flex flex-wrap gap-2 justify-content-center" id="opts-${i}">
+            <button type="button" class="option-btn flex-fill" data-value="0" onclick="selectOption(${i}, 0, this)">Никогда</button>
+            <button type="button" class="option-btn flex-fill" data-value="1" onclick="selectOption(${i}, 1, this)">Редко</button>
+            <button type="button" class="option-btn flex-fill" data-value="2" onclick="selectOption(${i}, 2, this)">Иногда</button>
+            <button type="button" class="option-btn flex-fill" data-value="3" onclick="selectOption(${i}, 3, this)">Чаще всего</button>
+            <button type="button" class="option-btn flex-fill" data-value="4" onclick="selectOption(${i}, 4, this)">Всегда</button>
+          </div>
+        </div>
+      `;
+      qContainer.appendChild(div);
+    });
+
+    const answers = new Array(questions.length).fill(null);
+
+    function selectOption(qIndex, value, btn) {
+      document.querySelectorAll(`#opts-${qIndex} .option-btn`).forEach(b => {
+        b.classList.remove('active');
+      });
+      btn.classList.add('active');
+      answers[qIndex] = value;
+    }
+
+    function goToPage(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(`page${pageNum}`).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function calculateResult() {
+      if (answers.some(a => a === null)) {
+        alert('Пожалуйста, ответьте на все вопросы.');
+        return;
+      }
+
+      const total = answers.reduce((sum, val) => sum + val, 0);
+      document.getElementById('score').textContent = total;
+
+      let levelText = '';
+      let interpretation = '';
+
+      if (total <= 39) {
+        levelText = 'Низкий уровень Титкофилии (как не стыдно-то)';
+        interpretation = 'Вам нельзя находиться в обществе, изолируйтесь, пожалуйста.';
+      } else if (total <= 79) {
+        levelText = 'Средний уровень Титкофилии (есть куда стремиться)';
+        interpretation = 'Вы — человек со светлой душой Титкофила! Вам нравится Иван Васильевич и его подход, однако вы всё еще не полностью окунулись в уникальный мир психологии и недостаточно активны на парах. Чтобы стать настоящим Титкофилом, вам нужно увеличить дозу дифференциальной и педагогической психологии: ходите на лазертаг, активно отвечайте на парах, собирайте коллекцию камушков, только так вы встанете на путь истинный.';
+      } else {
+        levelText = 'Высокий уровень Титкофилии (самый настоящий Титкофил, горжусь!)';
+        interpretation = 'Поздравляем! Вы — настоящий Титкофил, последователь и поклонник Ивана Васильевича. Вас отличает искренняя любовь к его парам и уважение к нему — лучшему преподавателю! Ваша преданность также — пример для окружающих. Честно говоря, вам и ничего не нужно делать, вы и так совершенство (хотя, конечно, всё равно не на уровне Ивана Васильевича). Продолжайте в том же духе — вы делаете наше учебное пространство ярким и вдохновляющим!';
+      }
+
+      document.getElementById('level-text').textContent = levelText;
+      document.getElementById('interpretation').textContent = interpretation;
+
+      goToPage(3);
+    }
+  </script>
+</body>
+</html>
