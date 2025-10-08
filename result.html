@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ваш результат — ТИВТ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --success: #4cc9f0;
+      --soft-bg: #f0f4ff;
+      --text: #212529;
+    }
+    body {
+      background-color: var(--soft-bg) !important;
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .card {
+      border-radius: 16px !important;
+      border: none !important;
+      box-shadow: 0 4px 20px rgba(67, 97, 238, 0.08) !important;
+      background: white;
+    }
+    .result-level {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 1.2rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--success));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .btn-primary {
+      background: var(--primary) !important;
+      border: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <header class="text-center mb-4">
+      <h2 class="h4">Ваш результат</h2>
+    </header>
+
+    <div class="card p-4 text-center">
+      <p class="fs-5">Вы набрали <span id="score" class="fw-bold" style="color: var(--primary);">0</span> баллов из 120.</p>
+      <div class="result-level" id="level-text">—</div>
+      <div class="mt-3" id="interpretation">—</div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="index.html" class="btn btn-primary px-4 py-2">Пройти тест снова</a>
+    </div>
+
+    <footer class="text-center mt-4 text-muted">
+      © 2025 Тест на Титкофилию (ТИВТ) | Группа 202 КП
+    </footer>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = parseInt(urlParams.get('score'));
+    const gender = urlParams.get('gender');
+
+    if (isNaN(score) || score < 0 || score > 120) {
+      document.getElementById('score').textContent = 'ошибка';
+      document.getElementById('level-text').textContent = 'Некорректный результат';
+      document.getElementById('interpretation').textContent = 'Пожалуйста, пройдите тест заново.';
+    } else {
+      document.getElementById('score').textContent = score;
+
+      let levelText = '';
+      let interpretation = '';
+
+      if (score <= 39) {
+        levelText = 'Низкий уровень Титкофилии (как не стыдно-то)';
+        interpretation = 'Вам нельзя находиться в обществе, изолируйтесь, пожалуйста.';
+      } else if (score <= 79) {
+        levelText = 'Средний уровень Титкофилии (есть куда стремиться)';
+        interpretation = 'Вы — человек со светлой душой Титкофила! Вам нравится Иван Васильевич и его подход, однако вы всё еще не полностью окунулись в уникальный мир психологии и недостаточно активны на парах. Чтобы стать настоящим Титкофилом, вам нужно увеличить дозу дифференциальной и педагогической психологии: ходите на лазертаг, активно отвечайте на парах, собирайте коллекцию камушков, только так вы встанете на путь истинный.';
+      } else {
+        levelText = 'Высокий уровень Титкофилии (самый настоящий Титкофил, горжусь!)';
+        interpretation = 'Поздравляем! Вы — настоящий Титкофил, последователь и поклонник Ивана Васильевича. Вас отличает искренняя любовь к его парам и уважение к нему — лучшему преподавателю! Ваша преданность также — пример для окружающих. Честно говоря, вам и ничего не нужно делать, вы и так совершенство (хотя, конечно, всё равно не на уровне Ивана Васильевича). Продолжайте в том же духе — вы делаете наше учебное пространство ярким и вдохновляющим!';
+      }
+
+      document.getElementById('level-text').textContent = levelText;
+      document.getElementById('interpretation').textContent = interpretation;
+    }
+  </script>
+</body>
+</html>

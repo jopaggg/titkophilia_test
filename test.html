@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Тест на Титкофилию — Вопросы</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --soft-bg: #f0f4ff;
+      --text: #212529;
+    }
+    body {
+      background-color: var(--soft-bg) !important;
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .card {
+      border-radius: 16px !important;
+      border: none !important;
+      box-shadow: 0 4px 20px rgba(67, 97, 238, 0.08) !important;
+      background: white;
+    }
+    .option-btn {
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.4rem;
+      border-radius: 10px !important;
+      border: 1px solid #e0e0e0 !important;
+      background: #fafbff !important;
+      color: #4a5568 !important;
+    }
+    .option-btn:hover {
+      background: #eef2ff !important;
+      color: var(--primary) !important;
+      border-color: #cbd5ff !important;
+    }
+    .option-btn.active {
+      background: var(--primary) !important;
+      color: white !important;
+      border-color: var(--primary) !important;
+      transform: scale(1.02);
+    }
+    .btn-success {
+      background: #4cc9f0 !important;
+      border: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <header class="text-center mb-4">
+      <h2 class="h4">Тест на Титкофилию</h2>
+      <p class="text-muted">Ответьте на все 30 вопросов</p>
+    </header>
+
+    <form id="test-form">
+      <div id="questions" class="mb-4"></div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-success btn-lg px-5 py-3">Получить результат</button>
+      </div>
+    </form>
+
+    <footer class="text-center mt-4 text-muted">
+      © 2025 Тест на Титкофилию (ТИВТ) | Группа 202 КП
+    </footer>
+  </div>
+
+  <script>
+    // Получаем пол из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const userGender = urlParams.get('gender');
+
+    if (!userGender || (userGender !== 'мужчина' && userGender !== 'женщина')) {
+      alert('Пожалуйста, укажите пол на главной странице.');
+      window.location.href = 'index.html';
+    }
+
+    const questions = [
+      "Я стараюсь делать презентации яркими и запоминающимися.",
+      "Я сильно расстраиваюсь, когда Иван Васильевич уезжает в командировку.",
+      "Я не упускаю шанс получить камушек за активность на занятии.",
+      "Я с удовольствием участвую в активностях, которые предлагает Иван Васильевич.",
+      "У меня всегда есть ресурс идти на пару по дифференциальной психологии в 8:30.",
+      "Мне важно услышать обратную связь от Ивана Васильевича о моем выступлении.",
+      "Мне бы хотелось проводить чаепития каждую неделю.",
+      "Я стараюсь не опаздывать на занятия Ивана Васильевича.",
+      "Я перечитываю выводы в чате группы по занятию.",
+      "Я развиваю разные навыки на парах Ивана Васильевича.",
+      "В среду я не могу спать после 5 утра.",
+      "Мое настроение поднимается, когда я понимаю, что сегодня четверг.",
+      "Я надеюсь, что следующая идея Ивана Васильевича будет ещё более необычной.",
+      "Я не против приезжать к 8:30 каждый день в университет на пару по дифференциальной психологии.",
+      "Меня преследуют навязчивые мысли: забрать все камушки себе.",
+      "Я готовлюсь к паре Ивана Васильевича за неделю.",
+      "Я жду лето ради повторения события 'психология и суслики'.",
+      "Знания, которые я получаю на парах Ивана Васильевича, я применяю в жизни.",
+      "Мне хотелось бы снова попасть на первый курс ради пар профессиональной этики и психологии безопасности.",
+      "Я не забываю благодарить Ивана Васильевича за его труд.",
+      "Я делаю записи в дневник наблюдений педагогического процесса каждый день.",
+      "Моя мотивация к учебе повышается, когда Иван Васильевич благодарит группу за посещения занятия.",
+      "Я с улыбкой вспоминаю, как на новый год мы спасали змейку от Гринча.",
+      "Я мечтаю о том, чтобы пойти на лазертаг с группой и Иваном Васильевичем.",
+      "Мне не нравится болеть в среду и четверг.",
+      "Меня пугают сообщения в чате от Ивана Васильевича, когда ему на ум приходит новая идея.",
+      "Материал, изученный на первом курсе, я применяю до сих пор.",
+      "Я хочу, чтобы в расписании каждый день стояла пара с Иваном Васильевичем.",
+      "У меня кружится голова, когда я пропускаю педагогическую психологию.",
+      "Я уважаю и люблю Ивана Васильевича."
+    ];
+
+    const qContainer = document.getElementById('questions');
+    questions.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'card p-3 mb-3';
+      div.innerHTML = `
+        <p class="fw-bold mb-3">${i + 1}. ${q}</p>
+        <div class="d-flex flex-wrap gap-2 justify-content-center">
+          <button type="button" class="option-btn flex-fill" data-value="0">Никогда</button>
+          <button type="button" class="option-btn flex-fill" data-value="1">Редко</button>
+          <button type="button" class="option-btn flex-fill" data-value="2">Иногда</button>
+          <button type="button" class="option-btn flex-fill" data-value="3">Чаще всего</button>
+          <button type="button" class="option-btn flex-fill" data-value="4">Всегда</button>
+        </div>
+      `;
+      qContainer.appendChild(div);
+
+      // Обработчик выбора
+      div.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          div.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          // Сохраняем ответ в data-атрибут формы
+          document.getElementById('test-form').dataset[`q${i}`] = btn.dataset.value;
+        });
+      });
+    });
+
+    document.getElementById('test-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const answers = [];
+      for (let i = 0; i < questions.length; i++) {
+        const ans = this.dataset[`q${i}`];
+        if (ans === undefined) {
+          alert('Пожалуйста, ответьте на все вопросы.');
+          return;
+        }
+        answers.push(parseInt(ans));
+      }
+
+      const total = answers.reduce((sum, val) => sum + val, 0);
+      // Передаём результат и пол в URL
+      const resultUrl = `result.html?score=${total}&gender=${encodeURIComponent(userGender)}`;
+      window.location.href = resultUrl;
+    });
+  </script>
+</body>
+</html>
